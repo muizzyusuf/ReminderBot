@@ -1,0 +1,1391 @@
+{
+  "name": "Making a reminder",
+  "intents": [
+    {
+      "intent": "Cancel_Reminder",
+      "examples": [
+        {
+          "text": "I would like to cancel a reminder"
+        },
+        {
+          "text": "Done with reminder"
+        },
+        {
+          "text": "Cancel reminder"
+        }
+      ],
+      "description": "To cancel a reminder that is no longer needed or that has been done"
+    },
+    {
+      "intent": "Retrieve_Reminder",
+      "examples": [
+        {
+          "text": "REM00001"
+        },
+        {
+          "text": "I would like to retrieve a reminder"
+        },
+        {
+          "text": "remind me"
+        },
+        {
+          "text": "Tell me about a reminder"
+        },
+        {
+          "text": "get reminder"
+        }
+      ],
+      "description": "To get an already stored/made reminder for a specific event"
+    },
+    {
+      "intent": "id",
+      "examples": [
+        {
+          "text": "14"
+        },
+        {
+          "text": "24"
+        },
+        {
+          "text": "17"
+        },
+        {
+          "text": "10"
+        },
+        {
+          "text": "20"
+        },
+        {
+          "text": "1"
+        },
+        {
+          "text": "2"
+        },
+        {
+          "text": "4"
+        },
+        {
+          "text": "7"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Make_Reminder",
+      "examples": [
+        {
+          "text": "I want to set a reminder"
+        },
+        {
+          "text": "I want to make a reminder"
+        },
+        {
+          "text": "25th of this month 9 pm"
+        },
+        {
+          "text": "Add reminder"
+        }
+      ],
+      "description": "To make a reminder for an event or task"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-person",
+      "values": []
+    },
+    {
+      "entity": "yes_no",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Yes",
+          "synonyms": [
+            "yeah",
+            "yep",
+            "yup",
+            "y",
+            "yah"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "No",
+          "synonyms": [
+            "nah",
+            "nay",
+            "nope",
+            "naw",
+            "n"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Hello",
+          "synonyms": [
+            "hi",
+            "hey",
+            "howdy",
+            "hiya",
+            "greetings",
+            "hola",
+            "hallo",
+            "hullo",
+            "available"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "events",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "christmas",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "thanksgiving",
+          "synonyms": [
+            "festive",
+            "potluck",
+            "celebration"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "easter",
+          "synonyms": [
+            "bunny",
+            "holiday"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "birthday",
+          "synonyms": [
+            "bday",
+            "birthdays",
+            "celebration"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "anniversary",
+          "synonyms": [
+            "jubilee",
+            "centenary",
+            "occasion"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "valentines",
+          "synonyms": [
+            "valentine",
+            "vday"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-location",
+      "values": []
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    },
+    {
+      "entity": "sys-time",
+      "values": []
+    },
+    {
+      "entity": "other_locations",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "resort",
+          "synonyms": [
+            "resorts",
+            "hotel",
+            "villas",
+            "spa",
+            "lodge",
+            "motel",
+            "inn",
+            "hotels",
+            "guesthouse",
+            "motels",
+            "spas",
+            "hostel",
+            "sauna",
+            "villa",
+            "lodges",
+            "hostels"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "gym",
+          "synonyms": [
+            "gymnasium",
+            "workout",
+            "gymnastics",
+            "gyms",
+            "fitness",
+            "aerobics",
+            "cardio",
+            "pilates",
+            "excercise",
+            "exercise",
+            "workouts",
+            "gymnasiums",
+            "bodybuilding",
+            "aerobic",
+            "boxercise",
+            "zumba",
+            "weightlifting",
+            "calisthenics",
+            "yoga",
+            "plyometrics",
+            "kickboxing",
+            "jazzercise",
+            "jogging"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Beach",
+          "synonyms": [
+            "beaches",
+            "seaside",
+            "beachfront",
+            "oceanfront",
+            "shores",
+            "ocean",
+            "island",
+            "resort",
+            "bay",
+            "pier"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "park",
+          "synonyms": [
+            "parks",
+            "gardens",
+            "forest",
+            "parkway",
+            "parc",
+            "grove"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "club",
+          "synonyms": [
+            "pub",
+            "clubs",
+            "clubhouse",
+            "nightclub",
+            "cabaret",
+            "discotheque",
+            "tavern",
+            "nightspot",
+            "pubs"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "museum",
+          "synonyms": [
+            "museums",
+            "gallery",
+            "exhibit"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "shopping",
+          "synonyms": [
+            "malls",
+            "shopping",
+            "plaza",
+            "downtown",
+            "supermarket",
+            "galleria",
+            "megamall",
+            "supermarkets",
+            "midtown",
+            "store",
+            "hypermarket",
+            "city",
+            "grocery",
+            "dowtown",
+            "stores",
+            "shop",
+            "groceries",
+            "town",
+            "deli",
+            "drugstore",
+            "grocers",
+            "grocer",
+            "shops",
+            "retailers",
+            "boutiques",
+            "village",
+            "outlets",
+            "retailer",
+            "bookstores",
+            "booksellers",
+            "bookstore",
+            "municipality",
+            "drugstores",
+            "bakery",
+            "superstores"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "cinema",
+          "synonyms": [
+            "cinemas",
+            "theater",
+            "films",
+            "movie",
+            "theatres"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Food",
+          "synonyms": [
+            "feast",
+            "breakfast",
+            "snack",
+            "buffet",
+            "restaurants",
+            "diner",
+            "café",
+            "deli",
+            "cafe",
+            "dining",
+            "cafeteria",
+            "eatery",
+            "cafés",
+            "coffeehouse",
+            "bistro",
+            "cuisine",
+            "eateries",
+            "lunchroom",
+            "cafeterias",
+            "bistros",
+            "pubs",
+            "trattorias"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "activities",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "study",
+          "synonyms": [
+            "read",
+            "writing",
+            "listening",
+            "lecture",
+            "research",
+            "homework"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "outdoor",
+          "synonyms": [
+            "swimming",
+            "snorkelling",
+            "boating",
+            "kayaking",
+            "picnicking",
+            "fishing",
+            "sailing",
+            "canyoning",
+            "hiking",
+            "skiing",
+            "gardening"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "arts",
+          "synonyms": [
+            "arts",
+            "artwork",
+            "printmaking",
+            "sculpture",
+            "painting",
+            "collage",
+            "prints",
+            "drawings",
+            "illustration",
+            "sketches",
+            "watercolor",
+            "monoprint",
+            "dancing",
+            "photography"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "sports",
+          "synonyms": [
+            "handball",
+            "lacrosse",
+            "hockey",
+            "futbol",
+            "leisure",
+            "volleyball",
+            "softball",
+            "varsity",
+            "baseball",
+            "soccer",
+            "basketball",
+            "football",
+            "athletics",
+            "sport",
+            "recreation",
+            "footbal",
+            "netball",
+            "badminton",
+            "rugby",
+            "tennis",
+            "hiking"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "reminder_code",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "reminderCode",
+          "patterns": [
+            "(REM)\\d{1,5}"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-date",
+      "values": []
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-07-10"
+    }
+  },
+  "skill_id": "e55cc8f4-9383-4e18-b6f4-e061078d8900",
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_48_1563830951369",
+      "metadata": {},
+      "variable": "$id",
+      "dialog_node": "slot_50_1563831052335",
+      "previous_sibling": "handler_49_1563831052325"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter the unique reminder id for the reminder to be canceled."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_48_1563830951369",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_49_1563831052325",
+      "previous_sibling": "node_57_1563832223017"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Confirmation declined. I am going to start over. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_48_1563830951369",
+      "context": {
+        "date": null,
+        "time": null,
+        "events": null,
+        "location": null,
+        "activities": null,
+        "reminderCode": null,
+        "otherLocations": null
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "conditions": "@yes_no:No",
+      "dialog_node": "node_57_1563832223017",
+      "previous_sibling": "node_56_1563832199941"
+    },
+    {
+      "type": "standard",
+      "title": "confirmation",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please be patient while I cancel your reminder. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_48_1563830951369",
+      "actions": [
+        {
+          "name": "abdelmuizz.yusuf%40hotmail.com_dev/actions/delete-http-resource/weather",
+          "type": "cloud_function",
+          "parameters": {
+            "id": "$id"
+          },
+          "credentials": "$mycreds",
+          "result_variable": "$myresult"
+        }
+      ],
+      "context": {
+        "mycreds": {
+          "user": "aeace14c-f1e2-45f6-8a4e-5509b111313d",
+          "password": "XYHo0TmUSj9CCcIJnuHuFaKf05TtUFtP3nfgkP4UbIc7ROmLAxjIehnMdMivMf03"
+        },
+        "myresult": ""
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_3_1564052014501"
+      },
+      "conditions": "@yes_no:Yes",
+      "dialog_node": "node_56_1563832199941"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Check your reminder code, does it begin with \"REM\" and do 5 digits come after it? Please try again."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_50_1563831052335",
+      "event_name": "nomatch",
+      "dialog_node": "handler_79_1563836511191",
+      "previous_sibling": "handler_51_1563831052335"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_50_1563831052335",
+      "context": {
+        "id": "@sys-number"
+      },
+      "metadata": {},
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_51_1563831052335",
+      "previous_sibling": "handler_52_1563831052335"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "What is the unique reminder id?"
+      },
+      "parent": "slot_50_1563831052335",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_52_1563831052335"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_37_1563829701698",
+      "event_name": "focus",
+      "dialog_node": "handler_39_1563830398370",
+      "previous_sibling": "slot_43_1563830408561"
+    },
+    {
+      "type": "slot",
+      "parent": "node_37_1563829701698",
+      "dialog_node": "slot_43_1563830408561"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_67_1563834243905",
+      "event_name": "focus",
+      "dialog_node": "handler_69_1563834243905",
+      "previous_sibling": "handler_68_1563834243905"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_67_1563834243905",
+      "event_name": "input",
+      "dialog_node": "handler_68_1563834243905"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Your unique reminder ID is <? context.myresult.response.body?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_36_1563828252673",
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "dialog_node": "node_4_1564056577391"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1563877813390",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1563877813390",
+      "previous_sibling": "handler_2_1563877813390"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_1_1563877813390",
+      "event_name": "input",
+      "dialog_node": "handler_2_1563877813390"
+    },
+    {
+      "type": "slot",
+      "parent": "node_62_1563832333761",
+      "dialog_node": "slot_67_1563834243905",
+      "previous_sibling": "node_63_1563833931955"
+    },
+    {
+      "type": "frame",
+      "title": "retrieval",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please be patient while I process your reminder code and retrieve your reminder."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_62_1563832333761",
+      "context": {
+        "mycreds": {
+          "user": "aeace14c-f1e2-45f6-8a4e-5509b111313d",
+          "password": "XYHo0TmUSj9CCcIJnuHuFaKf05TtUFtP3nfgkP4UbIc7ROmLAxjIehnMdMivMf03"
+        },
+        "myresult": ""
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_1_1564049075902"
+      },
+      "conditions": "@sys-number",
+      "dialog_node": "node_63_1563833931955",
+      "digress_out": "allow_all",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "What's the occasion?"
+      },
+      "parent": "slot_8_1563825839919",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_10_1563825839919",
+      "previous_sibling": "handler_9_1563825839919"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1563825839919",
+      "context": {
+        "events": "@events"
+      },
+      "metadata": {},
+      "conditions": "@events",
+      "event_name": "input",
+      "dialog_node": "handler_9_1563825839919"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Check your reminder code, does it begin with \"REM\" and do 5 digits come after it? Please try again."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_70_1563834270871",
+      "event_name": "nomatch",
+      "dialog_node": "handler_82_1563836604161",
+      "previous_sibling": "handler_71_1563834270871"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_70_1563834270871",
+      "context": {
+        "id": "@sys-number"
+      },
+      "metadata": {},
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_71_1563834270871",
+      "previous_sibling": "handler_72_1563834270871"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "your unique reminder id please."
+      },
+      "parent": "slot_70_1563834270871",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_72_1563834270871"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "What time?"
+      },
+      "parent": "slot_5_1563825830547",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_7_1563825830547",
+      "previous_sibling": "handler_6_1563825830547"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_5_1563825830547",
+      "context": {
+        "time": "@sys-time"
+      },
+      "conditions": "@sys-time",
+      "event_name": "input",
+      "dialog_node": "handler_6_1563825830547"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "What day?"
+      },
+      "parent": "slot_2_1563825749152",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_4_1563825749152",
+      "previous_sibling": "handler_3_1563825749152"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_2_1563825749152",
+      "context": {
+        "date": "@sys-date"
+      },
+      "conditions": "@sys-date",
+      "event_name": "input",
+      "dialog_node": "handler_3_1563825749152"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_63_1563833931955",
+      "metadata": {},
+      "variable": "$id",
+      "dialog_node": "slot_70_1563834270871",
+      "previous_sibling": "node_1_1564049075902"
+    },
+    {
+      "type": "standard",
+      "title": "retrieved reminder",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_63_1563833931955",
+      "actions": [
+        {
+          "name": "abdelmuizz.yusuf%40hotmail.com_dev/actions/get-http-resource/weather",
+          "type": "cloud_function",
+          "parameters": {
+            "id": "$id"
+          },
+          "credentials": "$mycreds",
+          "result_variable": "$myresult"
+        }
+      ],
+      "context": {
+        "mycreds": {
+          "user": "aeace14c-f1e2-45f6-8a4e-5509b111313d",
+          "password": "XYHo0TmUSj9CCcIJnuHuFaKf05TtUFtP3nfgkP4UbIc7ROmLAxjIehnMdMivMf03"
+        },
+        "myresult": ""
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1564050883636"
+      },
+      "conditions": "@sys-number",
+      "dialog_node": "node_1_1564049075902"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_57_1563832223017",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_61_1563832223045",
+      "previous_sibling": "slot_58_1563832223045"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_57_1563832223017",
+      "metadata": {},
+      "dialog_node": "slot_58_1563832223045"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_30_1563827253182",
+      "event_name": "focus",
+      "dialog_node": "handler_32_1563827253182",
+      "previous_sibling": "handler_31_1563827253182"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_30_1563827253182",
+      "context": {
+        "events": "@activities"
+      },
+      "metadata": {},
+      "conditions": "@activities",
+      "event_name": "input",
+      "dialog_node": "handler_31_1563827253182"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_27_1563827241434",
+      "event_name": "focus",
+      "dialog_node": "handler_29_1563827241434",
+      "previous_sibling": "handler_28_1563827241434"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_27_1563827241434",
+      "context": {
+        "location": "@sys-location"
+      },
+      "conditions": "@sys-location",
+      "event_name": "input",
+      "dialog_node": "handler_28_1563827241434"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Your reminder with ID: $id has been deleted."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_56_1563832199941",
+      "metadata": {},
+      "dialog_node": "node_3_1564052014501"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": "Where is this happening?"
+      },
+      "parent": "slot_21_1563826119772",
+      "event_name": "focus",
+      "dialog_node": "handler_23_1563826119772",
+      "previous_sibling": "handler_22_1563826119772"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_21_1563826119772",
+      "context": {
+        "location": "@other_locations"
+      },
+      "metadata": {},
+      "conditions": "@other_locations",
+      "event_name": "input",
+      "dialog_node": "handler_22_1563826119772"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Your reminder with id: $id is for a <?context.myresult.body.body[0].Event1?> in <?context.myresult.body.body[0].Venue?> at  <?context.myresult.body.body[0].Time1?> on  <?context.myresult.body.body[0].Date1?>"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1564049075902",
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "dialog_node": "node_2_1564050883636"
+    },
+    {
+      "type": "slot",
+      "parent": "node_1_1563803929779",
+      "variable": "$date",
+      "dialog_node": "slot_2_1563825749152",
+      "previous_sibling": "node_37_1563829701698"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Confirmation declined. I am going to start over. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1563803929779",
+      "context": {
+        "date": null,
+        "time": null,
+        "events": null,
+        "location": null,
+        "activities": null,
+        "otherLocations": null
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "conditions": "@yes_no:No",
+      "dialog_node": "node_37_1563829701698",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_36_1563828252673",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please enter the date and time of your event, what the occasion is and where it's happening to set a reminder."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_1_1563803929779",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_1_1563825749140",
+      "previous_sibling": "slot_8_1563825839919"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1563803929779",
+      "metadata": {},
+      "variable": "$events",
+      "dialog_node": "slot_8_1563825839919",
+      "previous_sibling": "slot_5_1563825830547"
+    },
+    {
+      "type": "slot",
+      "parent": "node_1_1563803929779",
+      "variable": "$time",
+      "dialog_node": "slot_5_1563825830547",
+      "previous_sibling": "slot_2_1563825749152"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1563803929779",
+      "metadata": {},
+      "variable": "$events",
+      "dialog_node": "slot_30_1563827253182",
+      "previous_sibling": "slot_27_1563827241434"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1563803929779",
+      "metadata": {},
+      "variable": "$location",
+      "dialog_node": "slot_21_1563826119772",
+      "previous_sibling": "handler_1_1563825749140"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1563803929779",
+      "metadata": {},
+      "variable": "$location",
+      "dialog_node": "slot_27_1563827241434",
+      "previous_sibling": "slot_21_1563826119772"
+    },
+    {
+      "type": "standard",
+      "title": "confirmation",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please be patient while I process your reminder and generate a unique ID for it. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1563803929779",
+      "actions": [
+        {
+          "name": "abdelmuizz.yusuf%40hotmail.com_dev/actions/post-http-resource/weather",
+          "type": "cloud_function",
+          "parameters": {
+            "id": 0,
+            "Date1": "$date",
+            "Time1": "$time",
+            "Venue": "$location",
+            "Event1": "$events",
+            "ReminderCode": ""
+          },
+          "credentials": "$mycreds",
+          "result_variable": "$myresult"
+        }
+      ],
+      "context": {
+        "mycreds": {
+          "user": "aeace14c-f1e2-45f6-8a4e-5509b111313d",
+          "password": "XYHo0TmUSj9CCcIJnuHuFaKf05TtUFtP3nfgkP4UbIc7ROmLAxjIehnMdMivMf03"
+        },
+        "myresult": ""
+      },
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1564056577391"
+      },
+      "conditions": "@yes_no:Yes",
+      "dialog_node": "node_36_1563828252673"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_43_1563830408561",
+      "event_name": "focus",
+      "dialog_node": "handler_45_1563830408561",
+      "previous_sibling": "handler_44_1563830408561"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_43_1563830408561",
+      "event_name": "input",
+      "dialog_node": "handler_44_1563830408561"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you for using me. Goodbye. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Anything else",
+      "metadata": {},
+      "conditions": "@yes_no:No",
+      "dialog_node": "node_4_1563883258310"
+    },
+    {
+      "type": "slot",
+      "parent": "Welcome",
+      "dialog_node": "slot_1_1563877813390"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_58_1563832223045",
+      "metadata": {},
+      "event_name": "focus",
+      "dialog_node": "handler_60_1563832223045",
+      "previous_sibling": "handler_59_1563832223045"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_58_1563832223045",
+      "metadata": {},
+      "event_name": "input",
+      "dialog_node": "handler_59_1563832223045"
+    },
+    {
+      "type": "standard",
+      "title": "Retrieve reminder",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Please enter the unique reminder id for the reminder to be retrieved. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#Retrieve_Reminder",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_62_1563832333761",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_48_1563830951369"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Anything else?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_62_1563832333761"
+    },
+    {
+      "type": "frame",
+      "title": "Cancel reminder",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I am going to cancel your reminder. Do you confirm cancellation?  "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#Cancel_Reminder",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_48_1563830951369",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_1_1563803929779",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "frame",
+      "title": "Make Reminder",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I am going to make a reminder for a/an $events at the $location for $time on $date. Do you confirm?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "special_menu": [
+          "yes",
+          "no"
+        ]
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "#Make_Reminder",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_1_1563803929779",
+      "digress_out": "allow_all",
+      "previous_sibling": "Welcome",
+      "digress_out_slots": "not_allowed"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. I am the Reminder-Bot. I can either help you to make or delete or retrieve a reminder. What would you like to do ?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "actions": [
+        {
+          "name": "abdelmuizz.yusuf%40hotmail.com_dev/actions/get-http-resource/weather",
+          "type": "cloud_function",
+          "parameters": {
+            "id": "$id"
+          },
+          "credentials": "$mycreds",
+          "result_variable": "$myresult"
+        }
+      ],
+      "context": {
+        "mycreds": {
+          "user": "aeace14c-f1e2-45f6-8a4e-5509b111313d",
+          "password": "XYHo0TmUSj9CCcIJnuHuFaKf05TtUFtP3nfgkP4UbIc7ROmLAxjIehnMdMivMf03"
+        },
+        "myresult": ""
+      },
+      "metadata": {
+        "fallback": "leave"
+      },
+      "conditions": "@greetings || welcome",
+      "digress_in": "does_not_return",
+      "dialog_node": "Welcome",
+      "digress_out": "allow_all"
+    }
+  ],
+  "workspace_id": "e55cc8f4-9383-4e18-b6f4-e061078d8900",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
